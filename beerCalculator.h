@@ -2,7 +2,15 @@
 #define __BEERCALCULATOR_H__
 
 
-void canBuyBeer(int age, char location, float promille);
+typedef enum BUYBEERSTATUS {
+    BUYBEER_YES,
+    BUYBEER_NO_TOOLDRUNK,
+    BUYBEER_NO_TOOYOUNG_SYSTEMET,
+    BUYBEER_NO_TOOYOUNG_KROGEN,
+
+} BUYBEERSTATUS;
+
+BUYBEERSTATUS canBuyBeer(int age, char location, float promille);
 
 
 

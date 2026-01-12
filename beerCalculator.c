@@ -1,19 +1,15 @@
 #include <stdio.h>
 #include "beerCalculator.h"
 
-void canBuyBeer(int age, char location, float promille) {
+BUYBEERSTATUS canBuyBeer(int age, char location, float promille) {
     if (promille > 1.0) {
-        printf("You are too drunk to buy beer.\n");
-        return;
+        return BUYBEER_NO_TOOLDRUNK;
+    }   
+    if (age < 20 && location == 'S' ) {
+        return BUYBEER_NO_TOOYOUNG_SYSTEMET;
     }
-    if (age <=20 && location == 'S' ) {
-        printf("You are too young to buy beer at Systemet.\n");
-        return;
+    if (age < 18 && location == 'K' ) {
+        return BUYBEER_NO_TOOYOUNG_KROGEN;
     }
-    if (age <=18 && location == 'K' ) {
-        printf("You are too young to buy beer at Krogen.\n");
-        return;
-    }
-   printf("Great you are allowed\n");
-   return;
+   return BUYBEER_YES;
 }

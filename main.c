@@ -7,6 +7,13 @@
 // 2. PROBLEM (TESTABILITY !)
 
 
+// testa
+// canBuyBeer(18,'K',0.5) -> BUYBEER_NO_TOOYOUNG_KROGEN
+// canBuyBeer(21,'S',1.5) -> BUYBEER_NO_TOOLDRUNK
+// canBuyBeer(19,'S',0.5) -> BUYBEER_NO_TOOYOUNG_SYSTEMET
+// canBuyBeer(25,'K',0.5) -> BUYBEER_Y
+
+
 int main() {
     while(true) {
         int age;
@@ -20,7 +27,16 @@ int main() {
         printf("Enter your promille level: ");
         scanf("%f", &promille);
 
-        canBuyBeer(age, location, promille);
+        BUYBEERSTATUS status = canBuyBeer(age, location, promille);
+        if(status == BUYBEER_YES) {
+            printf("Great you are allowed to buy beer!\n");
+        } else if (status == BUYBEER_NO_TOOLDRUNK) {
+            printf("You are too drunk to buy beer.\n");
+        } else if (status == BUYBEER_NO_TOOYOUNG_SYSTEMET) {
+            printf("You are too young to buy beer at Systemet.\n");
+        } else if (status == BUYBEER_NO_TOOYOUNG_KROGEN) {
+            printf("You are too young to buy beer at Krogen.\n");
+        }
     }
     return 0;
 }
